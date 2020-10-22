@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Model 
 struct MemoryGame <CardContent> {
     
     init(numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent) {
@@ -17,7 +18,7 @@ struct MemoryGame <CardContent> {
             cards.append(Card(content: content, pairIndex: 2*pairIndex))
             cards.append(Card(content: content, pairIndex: 2*pairIndex+1))
         }
-        
+        cards.shuffle()
     }
     
     var cards: Array<Card>
@@ -29,7 +30,7 @@ struct MemoryGame <CardContent> {
     struct Card: Identifiable {
         init (content: CardContent, pairIndex: Int) {
             
-            isFaceUp = false;
+            isFaceUp = true;
             isMatched = false;
             self.content = content
             id = pairIndex

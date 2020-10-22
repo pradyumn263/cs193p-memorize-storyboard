@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// View
 struct ContentView: View {
     var viewModel: EmojiMemoryGame
     
@@ -16,11 +17,13 @@ struct ContentView: View {
                 CardView(card: card).onTapGesture {
                     viewModel.choose(card: card)
                 }
+                .aspectRatio(0.66, contentMode: .fit)
             }
         }
         .padding()
         .foregroundColor(Color.orange)
-        .font(.largeTitle)
+        .font(viewModel.cards.count > 8 ? .body : .largeTitle)
+        
     }
 }
 

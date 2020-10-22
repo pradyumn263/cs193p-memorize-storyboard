@@ -5,16 +5,20 @@
 //  Created by Pradyumn Shukla on 20/10/20.
 //
 
+
+
 import SwiftUI
 
+/// View Model 
 class EmojiMemoryGame {
 
     //Outside can see this variable, but only this class can set this variable
     private var MemoryGameModel: MemoryGame<String> = EmojiMemoryGame.createMemoryGame()
     
     static func createMemoryGame () -> MemoryGame<String> {
-        let emojisArray: Array<String> = ["👻", "🎃", "🕷"]
-        return MemoryGame<String>(numberOfPairsOfCards: emojisArray.count) { pairIndex in
+        let emojisArray: Array<String> = ["👻", "🎃", "🕷", "😴", "😱"].shuffled()
+        let emojiCount = Int.random(in: 2..<5)
+        return MemoryGame<String>(numberOfPairsOfCards: emojiCount) { pairIndex in
             return emojisArray[pairIndex]
         }
     }
@@ -23,7 +27,7 @@ class EmojiMemoryGame {
     // MARK: - Getters
     
     var cards: Array<MemoryGame<String>.Card> {
-        MemoryGameModel.cards
+         return MemoryGameModel.cards
     }
     
     // MARK: - Intent(s)
