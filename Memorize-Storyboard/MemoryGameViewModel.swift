@@ -10,10 +10,10 @@
 import SwiftUI
 
 /// View Model 
-class MemoryGameViewModel {
+class MemoryGameViewModel: ObservableObject {
 
     //Outside can see this variable, but only this class can set this variable
-    private var MemoryGameModel: MemoryGame<String> = MemoryGameViewModel.createMemoryGame()
+    @Published private var MemoryGameModel: MemoryGame<String> = MemoryGameViewModel.createMemoryGame()
     
     static func createMemoryGame () -> MemoryGame<String> {
         let emojisArray: Array<String> =

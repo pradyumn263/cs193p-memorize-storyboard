@@ -9,7 +9,7 @@ import SwiftUI
 
 /// View
 struct MemoryGameView: View {
-    var viewModel: MemoryGameViewModel
+    @ObservedObject var viewModel: MemoryGameViewModel
     
     var body: some View {
         HStack {
@@ -17,13 +17,12 @@ struct MemoryGameView: View {
                 CardView(card: card).onTapGesture {
                     viewModel.choose(card: card)
                 }
-                .aspectRatio(0.66, contentMode: .fit)
+                .aspectRatio(2/3, contentMode: .fit)
+                
             }
         }
         .padding()
         .foregroundColor(Color.orange)
-        .font(viewModel.cards.count > 8 ? .body : .largeTitle)
-        
     }
 }
 
@@ -31,16 +30,24 @@ struct CardView : View {
     var card: MemoryGame<String>.Card
     
     var body: some View {
-        ZStack {
-            if(card.isFaceUp) {
-                RoundedRectangle(cornerRadius: 10).fill(Color.white)
-                RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 3)
-                Text(card.content)
-            } else {
-                RoundedRectangle(cornerRadius: 10).fill()
+        GeometryReader { geometry in
+            ZStack {
+                if(card.isFaceUp) {
+                    RoundedRectangle(cornerRadius: cornerRadius).fill(Color.white)
+                    RoundedRectangle(cornerRadius: cornerRadius).stroke(lineWidth: edgeLineWidth)
+                    Text(card.content)
+                } else {
+                    RoundedRectangle(cornerRadius: cornerRadius).fill()
+                }
             }
+            .font(.system(size: min(geometry.size.height, geometry.size.width) * fontScalingFactor))
         }
     }
+    
+    // MARK: - Drawing Constants
+    let cornerRadius: CGFloat = 10
+    let edgeLineWidth: CGFloat = 3
+    let fontScalingFactor: CGFloat = 0.75
 }
 
 struct ContentView_Previews: PreviewProvider {
