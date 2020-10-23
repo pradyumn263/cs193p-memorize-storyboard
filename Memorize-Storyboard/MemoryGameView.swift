@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MemoryGameView.swift
 //  Memorize-Storyboard
 //
 //  Created by Pradyumn Shukla on 30/09/20.
@@ -8,8 +8,8 @@
 import SwiftUI
 
 /// View
-struct ContentView: View {
-    var viewModel: EmojiMemoryGame
+struct MemoryGameView: View {
+    var viewModel: MemoryGameViewModel
     
     var body: some View {
         HStack {
@@ -45,6 +45,6 @@ struct CardView : View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(viewModel: EmojiMemoryGame())
+        MemoryGameView(viewModel: MemoryGameViewModel())
     }
 }
