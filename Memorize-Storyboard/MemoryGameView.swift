@@ -12,16 +12,14 @@ struct MemoryGameView: View {
     @ObservedObject var viewModel: MemoryGameViewModel
     
     var body: some View {
-        HStack {
-            ForEach(viewModel.cards) { card in
-                CardView(card: card).onTapGesture {
-                    viewModel.choose(card: card)
-                }
-                .aspectRatio(2/3, contentMode: .fit)
-                
+        GridView(viewModel.cards) { card in
+            CardView(card: card).onTapGesture {
+                viewModel.choose(card: card)
             }
+            .aspectRatio(2/3, contentMode: .fit)
+            .padding()
         }
-        .padding()
+//        .padding()
         .foregroundColor(Color.orange)
     }
 }

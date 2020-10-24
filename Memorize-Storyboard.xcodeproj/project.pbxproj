@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		79752CCB254417BF007FD112 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79752CCA254417BF007FD112 /* GridView.swift */; };
+		79752CCE25441DA3007FD112 /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79752CCD25441DA3007FD112 /* GridLayout.swift */; };
 		79A8825F253F072100967577 /* MemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A8825E253F072100967577 /* MemoryGame.swift */; };
 		79A88262253F13C400967577 /* MemoryGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A88261253F13C400967577 /* MemoryGameViewModel.swift */; };
 		79C89717252493B700E621FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C89716252493B700E621FA /* AppDelegate.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		79752CCA254417BF007FD112 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		79752CCD25441DA3007FD112 /* GridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
 		79A8825E253F072100967577 /* MemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGame.swift; sourceTree = "<group>"; };
 		79A88261253F13C400967577 /* MemoryGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGameViewModel.swift; sourceTree = "<group>"; };
 		79C89713252493B700E621FA /* Memorize-Storyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Memorize-Storyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +67,8 @@
 				79C89716252493B700E621FA /* AppDelegate.swift */,
 				79C89718252493B700E621FA /* SceneDelegate.swift */,
 				79C8971A252493B700E621FA /* MemoryGameView.swift */,
+				79752CCA254417BF007FD112 /* GridView.swift */,
+				79752CCD25441DA3007FD112 /* GridLayout.swift */,
 				79A88261253F13C400967577 /* MemoryGameViewModel.swift */,
 				79A8825E253F072100967577 /* MemoryGame.swift */,
 				79C8971C252493BA00E621FA /* Assets.xcassets */,
@@ -155,6 +161,8 @@
 				79C89719252493B700E621FA /* SceneDelegate.swift in Sources */,
 				79A8825F253F072100967577 /* MemoryGame.swift in Sources */,
 				79C8971B252493B700E621FA /* MemoryGameView.swift in Sources */,
+				79752CCB254417BF007FD112 /* GridView.swift in Sources */,
+				79752CCE25441DA3007FD112 /* GridLayout.swift in Sources */,
 				79A88262253F13C400967577 /* MemoryGameViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,7 +307,7 @@
 				DEVELOPMENT_TEAM = 8792VM5KKY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Memorize-Storyboard/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -321,7 +329,7 @@
 				DEVELOPMENT_TEAM = 8792VM5KKY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Memorize-Storyboard/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
