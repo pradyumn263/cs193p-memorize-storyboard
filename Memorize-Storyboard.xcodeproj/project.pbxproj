@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		794D14FC25449E36003AE73B /* Array+OnlyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794D14FB25449E36003AE73B /* Array+OnlyItem.swift */; };
 		79752CCB254417BF007FD112 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79752CCA254417BF007FD112 /* GridView.swift */; };
 		79752CCE25441DA3007FD112 /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79752CCD25441DA3007FD112 /* GridLayout.swift */; };
 		79A8825F253F072100967577 /* MemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A8825E253F072100967577 /* MemoryGame.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		794D14FB25449E36003AE73B /* Array+OnlyItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+OnlyItem.swift"; sourceTree = "<group>"; };
 		79752CCA254417BF007FD112 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		79752CCD25441DA3007FD112 /* GridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
 		79A8825E253F072100967577 /* MemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGame.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				79752CCD25441DA3007FD112 /* GridLayout.swift */,
 				79A88261253F13C400967577 /* MemoryGameViewModel.swift */,
 				79A8825E253F072100967577 /* MemoryGame.swift */,
+				794D14FB25449E36003AE73B /* Array+OnlyItem.swift */,
 				79C8971C252493BA00E621FA /* Assets.xcassets */,
 				79C89721252493BA00E621FA /* LaunchScreen.storyboard */,
 				79C89724252493BA00E621FA /* Info.plist */,
@@ -159,6 +162,7 @@
 			files = (
 				79C89717252493B700E621FA /* AppDelegate.swift in Sources */,
 				79C89719252493B700E621FA /* SceneDelegate.swift in Sources */,
+				794D14FC25449E36003AE73B /* Array+OnlyItem.swift in Sources */,
 				79A8825F253F072100967577 /* MemoryGame.swift in Sources */,
 				79C8971B252493B700E621FA /* MemoryGameView.swift in Sources */,
 				79752CCB254417BF007FD112 /* GridView.swift in Sources */,

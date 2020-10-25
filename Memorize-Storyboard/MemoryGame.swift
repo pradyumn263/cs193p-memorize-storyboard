@@ -8,10 +8,32 @@
 import Foundation
 
 /// Model 
-struct MemoryGame <CardContent> {
+struct MemoryGame <CardContent> where CardContent: Equatable {
     
     // MARK: - Variables
     var cards: Array<Card>
+    
+    var score: Int = 0
+    
+    /// Gives the Index of the Only card which is faced up.
+    /// If more than one cards are faced up, it is nil
+    ///
+    /// `set` sets the isFaceUp of call cards to `false`
+    /// unless the card is already matched, or the index is equal to `newValue`
+    var indexOfOnlyOneCardFaceUp: Int? {
+        get { cards.indices.filter { !cards[$0].isMatched && cards[$0].isFaceUp }.onlyItem() }
+        
+        set {
+            // Everything except itself, and already matched must be set to face down
+            for index in cards.indices {
+                if !cards[index].isMatched {
+                    cards[index].isFaceUp = index == newValue
+                }
+            }
+            
+        }
+    }
+    
     struct Card: Identifiable, Equatable {
         static func == (lhs: MemoryGame<CardContent>.Card, rhs: MemoryGame<CardContent>.Card) -> Bool {
             return lhs.id == rhs.id && lhs.isFaceUp == rhs.isFaceUp && lhs.isMatched == rhs.isMatched
@@ -19,7 +41,7 @@ struct MemoryGame <CardContent> {
         
         init (content: CardContent, pairIndex: Int) {
             
-            isFaceUp = true;
+            isFaceUp = false;
             isMatched = false;
             self.content = content
             id = pairIndex
@@ -50,16 +72,34 @@ struct MemoryGame <CardContent> {
     //MARK: - Methods
     /// This function "Chooses" a `card`
     /// Choosing a `card` means that's it's Face Up value is toggled
+    /// If 2 `card` are chosen already, it will see if they match.
+    /// If they match, they will stay face up throughout the game. else, they will face down when
+    /// a new card is chosen.
+    /// `indexOfOnlyOneCardFaceUp` contains the index of the only card which is face up.
+    /// If there are ore than 1 cards faced up, it is `nil`
     ///
     /// The changes are made to the `cards` array in self
     /// - Parameter card: The `card` which you want to choose.
     mutating func chooseCard(card: Card) {
-        print("Card Chosen! \(card)")
         // Instead of using firstIndex (which requires Card to be Equatable)
         // We can use the self made func called index(of: Card) -> Int?
-        if let i = cards.firstIndex(of: card) {
-            cards[i].isFaceUp = !cards[i].isFaceUp
-            print("Card Flipped! \(cards[i])")
+        if let chosenIndex = cards.firstIndex(of: card), !cards[chosenIndex].isFaceUp, !cards[chosenIndex].isMatched {
+            if let potentialMatchIndex = indexOfOnlyOneCardFaceUp {
+                print("First Card: \(cards[potentialMatchIndex])")
+                print("Second Card: \(cards[chosenIndex])")
+                cards[chosenIndex].isFaceUp = true
+                if(cards[chosenIndex].content == cards[potentialMatchIndex].content) {
+                    print("It is a Match!!")
+                    score+=2
+                    cards[chosenIndex].isMatched = true
+                    cards[potentialMatchIndex].isMatched = true
+                } else {
+                    print("It's not a Match!")
+                    score-=1
+                }
+            } else {
+                indexOfOnlyOneCardFaceUp = chosenIndex
+            }
         }
     }
     
@@ -72,10 +112,11 @@ struct MemoryGame <CardContent> {
                 return ind
             }
         }
-        return nil // TODO: Return Optional?
+        return nil
     }
     
-    
 }
+
+
 
 

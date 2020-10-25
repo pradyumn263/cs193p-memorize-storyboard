@@ -12,15 +12,37 @@ struct MemoryGameView: View {
     @ObservedObject var viewModel: MemoryGameViewModel
     
     var body: some View {
-        GridView(viewModel.cards) { card in
-            CardView(card: card).onTapGesture {
-                viewModel.choose(card: card)
+        
+        VStack {
+            HStack {
+                Text("Memorize!")
+                    .font(.title)
+                    .fontWeight(.bold)
+                Spacer()
+                ZStack {
+                    Button("Theme", action: {
+                        
+                    })
+                    .padding(.all, 10)
+                }
+                .background(Color.orange)
+                .clipShape(Capsule())
+                .foregroundColor(.white)
+                
+                
             }
-            .aspectRatio(2/3, contentMode: .fit)
             .padding()
+            Text("Score: \(viewModel.score)")
+            GridView(viewModel.cards) { card in
+                CardView(card: card).onTapGesture {
+                    viewModel.choose(card: card)
+                }
+                .padding()
+            }
+            .foregroundColor(Color.orange)
         }
-//        .padding()
-        .foregroundColor(Color.orange)
+    
+    
     }
 }
 

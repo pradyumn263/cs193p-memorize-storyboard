@@ -15,10 +15,11 @@ class MemoryGameViewModel: ObservableObject {
     //Outside can see this variable, but only this class can set this variable
     @Published private var MemoryGameModel: MemoryGame<String> = MemoryGameViewModel.createMemoryGame()
     
+    
     static func createMemoryGame () -> MemoryGame<String> {
         let emojisArray: Array<String> =
             ["👻", "🎃", "🕷", "😴", "😱", "😡", "☠️", "👀", "🐶", "🔥", "🥳", "🤬", "🥶", "🐼", "🌎", "🍓", "🍿"].shuffled()
-        let emojiCount = Int.random(in: 2...5)
+        let emojiCount = 9
         return MemoryGame<String>(numberOfPairsOfCards: emojiCount) { pairIndex in
             return emojisArray[pairIndex]
         }
@@ -30,6 +31,10 @@ class MemoryGameViewModel: ObservableObject {
     
     var cards: Array<MemoryGame<String>.Card> {
          return MemoryGameModel.cards
+    }
+    
+    var score: Int {
+        return MemoryGameModel.score
     }
     
     // MARK: - Intent(s)

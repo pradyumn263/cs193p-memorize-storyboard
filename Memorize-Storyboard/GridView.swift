@@ -30,6 +30,7 @@ struct GridView<Item, ItemView>: View where Item: Identifiable, Item: Equatable,
             }
         }
     }
+    
 }
 
 
