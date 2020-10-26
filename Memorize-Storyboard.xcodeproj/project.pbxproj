@@ -47,6 +47,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		793E0CF825474E3A000CBE0F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				79C8971A252493B700E621FA /* MemoryGameView.swift */,
+				79752CCA254417BF007FD112 /* GridView.swift */,
+				79752CCD25441DA3007FD112 /* GridLayout.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		793E0CFA25474EAE000CBE0F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				79A88261253F13C400967577 /* MemoryGameViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		793E0CFC25474EB7000CBE0F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				79A8825E253F072100967577 /* MemoryGame.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		793E0CFE25474EBF000CBE0F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				794D14FB25449E36003AE73B /* Array+OnlyItem.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		79C8970A252493B700E621FA = {
 			isa = PBXGroup;
 			children = (
@@ -68,12 +102,10 @@
 			children = (
 				79C89716252493B700E621FA /* AppDelegate.swift */,
 				79C89718252493B700E621FA /* SceneDelegate.swift */,
-				79C8971A252493B700E621FA /* MemoryGameView.swift */,
-				79752CCA254417BF007FD112 /* GridView.swift */,
-				79752CCD25441DA3007FD112 /* GridLayout.swift */,
-				79A88261253F13C400967577 /* MemoryGameViewModel.swift */,
-				79A8825E253F072100967577 /* MemoryGame.swift */,
-				794D14FB25449E36003AE73B /* Array+OnlyItem.swift */,
+				793E0CF825474E3A000CBE0F /* View */,
+				793E0CFA25474EAE000CBE0F /* ViewModel */,
+				793E0CFC25474EB7000CBE0F /* Model */,
+				793E0CFE25474EBF000CBE0F /* Extensions */,
 				79C8971C252493BA00E621FA /* Assets.xcassets */,
 				79C89721252493BA00E621FA /* LaunchScreen.storyboard */,
 				79C89724252493BA00E621FA /* Info.plist */,

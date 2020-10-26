@@ -15,6 +15,8 @@ struct MemoryGame <CardContent> where CardContent: Equatable {
     
     var score: Int = 0
     
+    var matchedCardPairCount = 0
+    
     /// Gives the Index of the Only card which is faced up.
     /// If more than one cards are faced up, it is nil
     ///
@@ -56,7 +58,23 @@ struct MemoryGame <CardContent> where CardContent: Equatable {
     //MARK: - Initializer
     init(numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent) {
         cards = Array<Card>();
-        
+        matchedCardPairCount = 0
+        for pairIndex in 0 ..< numberOfPairsOfCards {
+            let content: CardContent = cardContentFactory(pairIndex)
+            cards.append(Card(content: content, pairIndex: 2*pairIndex))
+            cards.append(Card(content: content, pairIndex: 2*pairIndex+1))
+        }
+        cards.shuffle()
+        print("Model Init Finished")
+        for card in cards {
+            print("\(card.id) \(card.isFaceUp)")
+        }
+    }
+    
+    mutating func createGame (numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent) {
+        cards = Array<Card>();
+        matchedCardPairCount = 0
+
         for pairIndex in 0 ..< numberOfPairsOfCards {
             let content: CardContent = cardContentFactory(pairIndex)
             cards.append(Card(content: content, pairIndex: 2*pairIndex))
@@ -90,6 +108,7 @@ struct MemoryGame <CardContent> where CardContent: Equatable {
                 cards[chosenIndex].isFaceUp = true
                 if(cards[chosenIndex].content == cards[potentialMatchIndex].content) {
                     print("It is a Match!!")
+                    matchedCardPairCount += 1
                     score+=2
                     cards[chosenIndex].isMatched = true
                     cards[potentialMatchIndex].isMatched = true

@@ -37,6 +37,10 @@ class MemoryGameViewModel: ObservableObject {
         return MemoryGameModel.score
     }
     
+    var matchedCardCount: Int {
+        return MemoryGameModel.matchedCardPairCount
+    }
+    
     // MARK: - Intent(s)
     
     func choose (card: MemoryGame<String>.Card) {
