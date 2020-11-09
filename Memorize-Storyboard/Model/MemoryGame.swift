@@ -12,10 +12,9 @@ struct MemoryGame <CardContent> where CardContent: Equatable {
     
     // MARK: - Variables
     var cards: Array<Card>
-    
+    var gameOver: Bool = false
+    var countOfMatchedCards = 0
     var score: Int = 0
-    
-    var matchedCardPairCount = 0
     
     /// Gives the Index of the Only card which is faced up.
     /// If more than one cards are faced up, it is nil
@@ -29,7 +28,14 @@ struct MemoryGame <CardContent> where CardContent: Equatable {
             // Everything except itself, and already matched must be set to face down
             for index in cards.indices {
                 if !cards[index].isMatched {
-                    cards[index].isFaceUp = index == newValue
+                    if(index != newValue) {
+                        if(cards[index].isFaceUp) {
+                            cards[index].isFaceUp = false
+                            cards[index].alreadySeen = true
+                        }
+                    } else {
+                        cards[index].isFaceUp = true
+                    }
                 }
             }
             
@@ -47,34 +53,19 @@ struct MemoryGame <CardContent> where CardContent: Equatable {
             isMatched = false;
             self.content = content
             id = pairIndex
+            alreadySeen = false
         }
         
         var id: Int
         var isFaceUp: Bool
         var isMatched: Bool
         var content: CardContent
+        var alreadySeen: Bool
     }
     
     //MARK: - Initializer
     init(numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent) {
         cards = Array<Card>();
-        matchedCardPairCount = 0
-        for pairIndex in 0 ..< numberOfPairsOfCards {
-            let content: CardContent = cardContentFactory(pairIndex)
-            cards.append(Card(content: content, pairIndex: 2*pairIndex))
-            cards.append(Card(content: content, pairIndex: 2*pairIndex+1))
-        }
-        cards.shuffle()
-        print("Model Init Finished")
-        for card in cards {
-            print("\(card.id) \(card.isFaceUp)")
-        }
-    }
-    
-    mutating func createGame (numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent) {
-        cards = Array<Card>();
-        matchedCardPairCount = 0
-
         for pairIndex in 0 ..< numberOfPairsOfCards {
             let content: CardContent = cardContentFactory(pairIndex)
             cards.append(Card(content: content, pairIndex: 2*pairIndex))
@@ -108,13 +99,21 @@ struct MemoryGame <CardContent> where CardContent: Equatable {
                 cards[chosenIndex].isFaceUp = true
                 if(cards[chosenIndex].content == cards[potentialMatchIndex].content) {
                     print("It is a Match!!")
-                    matchedCardPairCount += 1
                     score+=2
                     cards[chosenIndex].isMatched = true
                     cards[potentialMatchIndex].isMatched = true
+                    countOfMatchedCards += 1
+                    if countOfMatchedCards == 9 {
+                        gameOver = true
+                    }
                 } else {
                     print("It's not a Match!")
-                    score-=1
+                    if cards[chosenIndex].alreadySeen {
+                        score -= 1
+                    }
+                    if(cards[potentialMatchIndex].alreadySeen) {
+                        score -= 1
+                    }
                 }
             } else {
                 indexOfOnlyOneCardFaceUp = chosenIndex
