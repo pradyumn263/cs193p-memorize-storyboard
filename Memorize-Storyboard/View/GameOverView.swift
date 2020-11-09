@@ -32,7 +32,7 @@ struct GameOverView: View {
             .background(Color("bg"))
             .overlay(
                 RoundedRectangle(cornerRadius: 5)
-                    .stroke(Color.orange, lineWidth: 4)
+                    .stroke(viewModel.getColor, lineWidth: 4)
             )
         
         
