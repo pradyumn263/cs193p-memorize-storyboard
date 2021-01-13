@@ -34,6 +34,7 @@ struct GameOverView: View {
                 RoundedRectangle(cornerRadius: 5)
                     .stroke(viewModel.getColor, lineWidth: 4)
             )
+            .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
         
         
     }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// View
+// MARK: - Main Game View
 struct MemoryGameView: View {
     @ObservedObject var viewModel: MemoryGameViewModel
     @State var isShowingTheme = false
@@ -27,7 +27,7 @@ struct MemoryGameView: View {
                         }
                         .padding(.all, 10)
                         .sheet(isPresented: $isShowingTheme) {
-                            ThemeView(viewModel: self.viewModel)
+                            ThemeView(viewModel: viewModel)
                         }
                     }
                     .background(viewModel.getColor)
@@ -51,7 +51,7 @@ struct MemoryGameView: View {
                     CardView(card: card).onTapGesture {
                         viewModel.choose(card: card)
                     }
-                    .padding()
+                    .padding(5)
                 }
                 .foregroundColor(viewModel.getColor)
             }
@@ -71,24 +71,25 @@ struct CardView : View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                if(card.isFaceUp) {
-                    RoundedRectangle(cornerRadius: cornerRadius).fill(Color.white)
-                    RoundedRectangle(cornerRadius: cornerRadius).stroke(lineWidth: edgeLineWidth)
-                    Text(card.content)
-                } else {
-                    RoundedRectangle(cornerRadius: cornerRadius).fill()
-                }
+                PieView(startAngle: .degrees(0 - 90), endAngle: .degrees(110 - 90))
+                    .padding(3)
+                    .opacity(0.4)
+                Text(card.content)
+                    .font(.system(size: min(geometry.size.height, geometry.size.width) * fontScalingFactor))
             }
-            .font(.system(size: min(geometry.size.height, geometry.size.width) * fontScalingFactor))
+            .cardify(isFaceUp: card.isFaceUp)
         }
     }
     
     // MARK: - Drawing Constants
-    let cornerRadius: CGFloat = 10
+    let cornerRadius: CGFloat = 5
     let edgeLineWidth: CGFloat = 3
-    let fontScalingFactor: CGFloat = 0.75
+    let fontScalingFactor: CGFloat = 0.7
 }
 
+
+
+// MARK: - Preview
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         MemoryGameView(viewModel: MemoryGameViewModel())

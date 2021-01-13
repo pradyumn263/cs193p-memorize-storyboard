@@ -47,7 +47,7 @@ class MemoryGameViewModel: ObservableObject {
         }
     }
     
-    static func createMemoryGame () -> MemoryGame<String> {
+    private static func createMemoryGame () -> MemoryGame<String> {
         let emojisArray: [String] = getEmojisArrayForCurrentTheme()
         let emojiCount = 9
         return MemoryGame<String>(numberOfPairsOfCards: emojiCount) { pairIndex in
